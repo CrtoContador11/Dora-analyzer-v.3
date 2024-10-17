@@ -1,0 +1,83 @@
+{
+  "home": {
+    "welcome": "Bem-vindo ao DORA Analyzer",
+    "description": "Analise o grau de implementação do Regulamento DORA na sua entidade financeira.",
+    "startAnalysis": "Iniciar Análise"
+  },
+  "header": {
+    "home": "Início",
+    "questionnaire": "Questionário",
+    "reports": "Relatórios",
+    "clients": "Clientes",
+    "customize": "Personalizar",
+    "login": "Iniciar sessão",
+    "logout": "Encerrar sessão",
+    "user": "Usuário"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados."
+  },
+  "login": {
+    "title": "Iniciar sessão",
+    "username": "Usuário",
+    "password": "Senha",
+    "submit": "Iniciar sessão",
+    "error": "Usuário ou senha incorretos"
+  },
+  "clientList": {
+    "title": "Lista de Clientes",
+    "noClients": "Não há clientes salvos.",
+    "delete": "Excluir",
+    "newClient": "Novo Cliente"
+  },
+  "reports": {
+    "doraImplementationReport": "Relatório de Implementação DORA",
+    "selectClient": "Selecione um cliente",
+    "allClients": "Todos os clientes",
+    "client": "Cliente",
+    "executiveSummary": "Resumo Executivo",
+    "allClientsDescription": "O gráfico mostra a média de implementação do Regulamento DORA para todos os clientes.",
+    "clientDescription": "O cliente {clientName} mostra um nível variado de implementação do Regulamento DORA.",
+    "recommendationDescription": "Destacam-se áreas fortes e áreas que podem requerer maior atenção. Recomenda-se focar na melhoria das áreas com pontuações mais baixas.",
+    "selectClientToViewReport": "Selecione um cliente para ver o relatório.",
+    "doraImplementationByArea": "Implementação DORA por Área",
+    "implementationLevel": "Nível de Implementação",
+    "categories": "Categorias"
+  },
+  "questionnaire": {
+    "newQuestionnaire": "Novo Questionário",
+    "clientName": "Nome do Cliente",
+    "startQuestionnaire": "Iniciar Questionário",
+    "loadDraft": "Carregar Rascunho",
+    "doraImplementationQuestionnaire": "Questionário de Implementação DORA",
+    "client": "Cliente",
+    "completed": "concluído",
+    "allQuestionsCompleted": "Você completou todas as perguntas.",
+    "saveDraft": "Salvar rascunho",
+    "submitAndGenerateReport": "Enviar e Gerar Relatório",
+    "draftSaved": "Rascunho salvo com sucesso",
+    "noDraft": "Não há rascunho salvo"
+  },
+  "customize": {
+    "title": "Personalizar Questionário",
+    "manageCategories": "Gerenciar Categorias",
+    "newCategoryPlaceholder": "Nova categoria",
+    "addCategory": "Adicionar Categoria",
+    "editCategory": "Editar",
+    "deleteCategory": "Excluir",
+    "saveCategory": "Salvar",
+    "cancelEdit": "Cancelar",
+    "addNewQuestion": "Adicionar Nova Pergunta",
+    "questionText": "Texto da pergunta",
+    "selectCategory": "Selecionar categoria",
+    "option": "Opção",
+    "score": "Pontuação",
+    "removeOption": "Remover Opção",
+    "addOption": "Adicionar Opção",
+    "addQuestion": "Adicionar Pergunta",
+    "existingQuestions": "Perguntas Existentes",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "saveChanges": "Salvar Alterações"
+  }
+}

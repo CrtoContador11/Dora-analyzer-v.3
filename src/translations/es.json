@@ -1,0 +1,83 @@
+{
+  "home": {
+    "welcome": "Bienvenido a DORA Analyzer",
+    "description": "Analice el grado de implementación del Reglamento DORA en su entidad financiera.",
+    "startAnalysis": "Comenzar Análisis"
+  },
+  "header": {
+    "home": "Inicio",
+    "questionnaire": "Cuestionario",
+    "reports": "Informes",
+    "clients": "Clientes",
+    "customize": "Personalizar",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "user": "Usuario"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  },
+  "login": {
+    "title": "Iniciar sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión",
+    "error": "Usuario o contraseña incorrectos"
+  },
+  "clientList": {
+    "title": "Lista de Clientes",
+    "noClients": "No hay clientes guardados.",
+    "delete": "Eliminar",
+    "newClient": "Nuevo Cliente"
+  },
+  "reports": {
+    "doraImplementationReport": "Informe de Implementación DORA",
+    "selectClient": "Seleccione un cliente",
+    "allClients": "Todos los clientes",
+    "client": "Cliente",
+    "executiveSummary": "Resumen Ejecutivo",
+    "allClientsDescription": "El gráfico muestra el promedio de implementación del Reglamento DORA para todos los clientes.",
+    "clientDescription": "El cliente {clientName} muestra un nivel variado de implementación del Reglamento DORA.",
+    "recommendationDescription": "Se destacan áreas fuertes y áreas que podrían requerir mayor atención. Se recomienda enfocarse en mejorar las áreas con puntuaciones más bajas.",
+    "selectClientToViewReport": "Seleccione un cliente para ver el informe.",
+    "doraImplementationByArea": "Implementación DORA por Área",
+    "implementationLevel": "Nivel de Implementación",
+    "categories": "Categorías"
+  },
+  "questionnaire": {
+    "newQuestionnaire": "Nuevo Cuestionario",
+    "clientName": "Nombre del Cliente",
+    "startQuestionnaire": "Comenzar Cuestionario",
+    "loadDraft": "Cargar Borrador",
+    "doraImplementationQuestionnaire": "Cuestionario de Implementación DORA",
+    "client": "Cliente",
+    "completed": "completado",
+    "allQuestionsCompleted": "Has completado todas las preguntas.",
+    "saveDraft": "Guardar borrador",
+    "submitAndGenerateReport": "Enviar y Generar Informe",
+    "draftSaved": "Borrador guardado con éxito",
+    "noDraft": "No hay borrador guardado"
+  },
+  "customize": {
+    "title": "Personalizar Cuestionario",
+    "manageCategories": "Gestionar Categorías",
+    "newCategoryPlaceholder": "Nueva categoría",
+    "addCategory": "Añadir Categoría",
+    "editCategory": "Editar",
+    "deleteCategory": "Eliminar",
+    "saveCategory": "Guardar",
+    "cancelEdit": "Cancelar",
+    "addNewQuestion": "Añadir Nueva Pregunta",
+    "questionText": "Texto de la pregunta",
+    "selectCategory": "Seleccionar categoría",
+    "option": "Opción",
+    "score": "Puntuación",
+    "removeOption": "Eliminar Opción",
+    "addOption": "Añadir Opción",
+    "addQuestion": "Añadir Pregunta",
+    "existingQuestions": "Preguntas Existentes",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "saveChanges": "Guardar Cambios"
+  }
+}
