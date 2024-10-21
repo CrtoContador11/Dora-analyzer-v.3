@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Form from './components/Form';
@@ -28,7 +27,7 @@ const App: React.FC = () => {
 
   const handleFormSubmit = async (data: FormDataType) => {
     console.log("Form submitted:", data);
-    setFormData([...formData, data]);
+    setFormData(prevFormData => [...prevFormData, data]);
     setCurrentView('report');
   };
 
@@ -40,7 +39,7 @@ const App: React.FC = () => {
   };
 
   const handleSaveDraft = (draft: Draft) => {
-    setDrafts([...drafts, draft]);
+    setDrafts(prevDrafts => [...prevDrafts, draft]);
     setCurrentView('drafts');
   };
 
@@ -50,16 +49,20 @@ const App: React.FC = () => {
   };
 
   const handleDeleteDraft = (date: string) => {
-    setDrafts(drafts.filter(draft => draft.date !== date));
+    setDrafts(prevDrafts => prevDrafts.filter(draft => draft.date !== date));
   };
 
   const handleUpdateForm = (updatedForm: FormDataType) => {
-    setFormData(formData.map(form => form.date === updatedForm.date ? updatedForm : form));
+    setFormData(prevFormData => prevFormData.map(form => form.date === updatedForm.date ? updatedForm : form));
   };
 
   const handleDeleteForm = (dateToDelete: string) => {
-    setFormData(formData.filter(form => form.date !== dateToDelete));
+    setFormData(prevFormData => prevFormData.filter(form => form.date !== dateToDelete));
   };
+
+  useEffect(() => {
+    console.log("Current formData:", formData);
+  }, [formData]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
