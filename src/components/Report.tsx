@@ -2,8 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { FormDataType, Question, Category } from '../types';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import { generatePDF } from '../pdfGenerator/generatePDF';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -40,7 +39,6 @@ const Report: React.FC<ReportProps> = ({ formData, questions, categories, langua
   const chartOptions = {
     indexAxis: 'y' as const,
     responsive: true,
-    maintainAspectRatio: false,
     scales: {
       x: {
         beginAtZero: true,
@@ -63,46 +61,12 @@ const Report: React.FC<ReportProps> = ({ formData, questions, categories, langua
     },
   };
 
-  const generatePDF = () => {
-    const doc = new jsPDF();
-    const selectedForm = formData[selectedFormIndex];
-    
-    // Title
-    doc.setFontSize(20);
-    doc.text('Informe DORA', 105, 15, { align: 'center' });
-    
-    // Form details
-    doc.setFontSize(12);
-    doc.text(`Proveedor TIC/Departamento: ${selectedForm.providerName}`, 20, 30);
-    doc.text(`Entidad Financiera: ${selectedForm.financialEntityName}`, 20, 40);
-    doc.text(`Usuario: ${selectedForm.userName}`, 20, 50);
-    doc.text(`Fecha: ${new Date(selectedForm.date).toLocaleDateString(language === 'es' ? 'es-ES' : 'pt-BR')}`, 20, 60);
-
-    // Chart
+  const handleGeneratePDF = () => {
     if (chartRef.current) {
       const chartImage = chartRef.current.toBase64Image();
-      doc.addImage(chartImage, 'PNG', 15, 70, 180, 100);
+      const doc = generatePDF(formData[selectedFormIndex], questions, categories, language, chartImage);
+      doc.save('informe_dora.pdf');
     }
-
-    // Questions and Answers
-    doc.addPage();
-    const tableData = questions.map((q) => [
-      q.text[language]
-        .replace('{providerName}', selectedForm.providerName)
-        .replace('{financialEntityName}', selectedForm.financialEntityName),
-      q.options.find((opt) => opt.value === selectedForm.answers[q.id])?.text[language] || '',
-      selectedForm.observations[q.id] || ''
-    ]);
-
-    doc.autoTable({
-      head: [[language === 'es' ? 'Pregunta' : 'Pergunta', language === 'es' ? 'Respuesta' : 'Resposta', language === 'es' ? 'Observaciones' : 'Observações']],
-      body: tableData,
-      startY: 10,
-      styles: { overflow: 'linebreak', cellWidth: 'wrap' },
-      columnStyles: { 0: { cellWidth: 80 }, 1: { cellWidth: 50 }, 2: { cellWidth: 60 } }
-    });
-
-    doc.save('informe_dora.pdf');
   };
 
   if (formData.length === 0) {
@@ -111,7 +75,7 @@ const Report: React.FC<ReportProps> = ({ formData, questions, categories, langua
         <h2 className="text-xl sm:text-2xl font-bold mb-4">
           {language === 'es' ? 'No hay informes disponibles' : 'Não há relatórios disponíveis'}
         </h2>
-        <p>
+        <p className="text-sm sm:text-base">
           {language === 'es'
             ? 'Complete un cuestionario para ver el informe.'
             : 'Complete um questionário para ver o relatório.'}
@@ -145,21 +109,21 @@ const Report: React.FC<ReportProps> = ({ formData, questions, categories, langua
           ))}
         </select>
       </div>
-      <div className="mb-8 overflow-x-auto h-64 sm:h-96">
+      <div className="mb-8 overflow-x-auto">
         <Bar ref={chartRef} data={chartData} options={chartOptions} />
       </div>
       <div className="mt-8">
         <h3 className="text-lg sm:text-xl font-semibold mb-4">
           {language === 'es' ? 'Detalles del informe' : 'Detalhes do relatório'}
         </h3>
-        <p><strong>{language === 'es' ? 'Proveedor TIC/Departamento:' : 'Provedor TIC/Departamento:'}</strong> {selectedForm.providerName}</p>
-        <p><strong>{language === 'es' ? 'Entidad Financiera:' : 'Entidade Financeira:'}</strong> {selectedForm.financialEntityName}</p>
-        <p><strong>{language === 'es' ? 'Usuario:' : 'Usuário:'}</strong> {selectedForm.userName}</p>
-        <p><strong>{language === 'es' ? 'Fecha:' : 'Data:'}</strong> {new Date(selectedForm.date).toLocaleDateString(language === 'es' ? 'es-ES' : 'pt-BR')}</p>
+        <p className="text-sm sm:text-base"><strong>{language === 'es' ? 'Proveedor TIC/Departamento:' : 'Provedor TIC/Departamento:'}</strong> {selectedForm.providerName}</p>
+        <p className="text-sm sm:text-base"><strong>{language === 'es' ? 'Entidad Financiera:' : 'Entidade Financeira:'}</strong> {selectedForm.financialEntityName}</p>
+        <p className="text-sm sm:text-base"><strong>{language === 'es' ? 'Usuario:' : 'Usuário:'}</strong> {selectedForm.userName}</p>
+        <p className="text-sm sm:text-base"><strong>{language === 'es' ? 'Fecha:' : 'Data:'}</strong> {new Date(selectedForm.date).toLocaleDateString(language === 'es' ? 'es-ES' : 'pt-BR')}</p>
       </div>
       <button
         className="mt-4 w-full sm:w-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        onClick={generatePDF}
+        onClick={handleGeneratePDF}
       >
         {language === 'es' ? 'Generar PDF' : 'Gerar PDF'}
       </button>
