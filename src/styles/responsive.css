@@ -1,0 +1,78 @@
+/* Responsive styles */
+
+/* Adjust font sizes for mobile */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Ensure proper spacing on mobile */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* Additional mobile-specific styles */
+@media (max-width: 640px) {
+  .mobile-full-width {
+    width: 100%;
+  }
+  
+  .mobile-text-center {
+    text-align: center;
+  }
+  
+  .mobile-stack {
+    flex-direction: column;
+  }
+  
+  .mobile-mb-2 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Responsive utilities */
+.max-w-mobile {
+  max-width: 100%;
+}
+
+/* Menu responsiveness */
+@media (max-width: 640px) {
+  .menu-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-item-text {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+}
+
+/* Form responsiveness */
+@media (max-width: 640px) {
+  .form-container {
+    padding: 1rem;
+  }
+
+  .form-input {
+    font-size: 0.875rem;
+  }
+
+  .form-button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Chart responsiveness */
+@media (max-width: 640px) {
+  .chart-container {
+    height: 300px;
+  }
+}
+
+/* Add any other responsive styles here */
